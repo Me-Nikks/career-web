@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikhildas C R | Software Engineer</title>
+    <style>
+        :root {
+            --primary: #2a4365;
+            --secondary: #4a5568;
+            --accent: #3182ce;
+            --light: #f7fafc;
+            --dark: #1a202c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 40%);
+            z-index: 1;
+        }
+        
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid white;
+            margin-bottom: 1rem;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(49, 130, 206, 0.1);
+            margin: 0.5rem;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(49, 130, 206, 0.2);
+            background-color: #2b6cb0;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .actions {
+            margin: 1.5rem 0;
+        }
+        
+        section {
+            margin: 2rem 0;
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .education-item, .experience-item, .skill-category, .publication-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .education-item h3, .experience-item h3, .publication-item h3 {
+            color: var(--secondary);
+            margin-bottom: 0.3rem;
+        }
+        
+        .date {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .skill-category {
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-category h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-pill {
+            background-color: #e2e8f0;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .skill-pill:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .publication-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .publication-link:hover {
+            text-decoration: underline;
+        }
+        
+        .experience-list {
+            margin-left: 1.5rem;
+        }
+        
+        .experience-list li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .experience-subheading {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-info {
+            margin-bottom: 1rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #4a5568;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .progress-container {
+            width: 100%;
+            background-color: #e2e8f0;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            height: 8px;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            border-radius: 10px;
+            background-color: var(--accent);
+        }
+        
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .tech-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            background-color: #f8fafc;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            width: 100px;
+            height: 100px;
+            justify-content: center;
+        }
+        
+        .tech-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tech-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+        
+        .tech-name {
+            font-size: 0.8rem;
+            text-align: center;
+            color: var(--secondary);
+        }
+        
+        /* Collapsible section styles */
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .expanded {
+            max-height: 2000px;
+            transition: max-height 0.6s ease-in;
+        }
+        
+        .toggle-btn {
+            display: inline-block;
+            background-color: var(--light);
+            color: var(--accent);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--accent);
+            cursor: pointer;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .toggle-btn:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .preview-content {
+            margin-bottom: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .skill-category {
+                width: 45%;
+                margin-right: 5%;
+            }
+            
+            .tech-badge {
+                width: calc(20% - 1rem);
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        section {
+            animation: fadeInUp 0.5s ease-out forwards;
+            opacity: 0;
+        }
+        
+        section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        
+        section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        
+        section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+        
+        section:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+        
+        .expand-icon {
+            display: inline-block;
+            margin-left: 0.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .rotate {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-bg"></div>
+        <div class="header-content">
+            <img src="images/carrer pp.jpg" alt="jooo" class="profile-pic">
+            <h1>Nikhildas C R</h1>
+            <p class="title">Trainee Software Engineer | ERPNext Specialist</p>
+            <div class="actions">
+                <a href="https://drive.google.com/file/d/1O_cVq1Z3aNRvHB7S2nQXS4Xercsxpfbt/view?usp=sharing" class="btn" download>Download Resume</a>
+                <a href="https://www.linkedin.com/in/nikhildascr/" class="btn btn-outline">LinkedIn Profile</a>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Software Engineer specializing in Frappe Framework and ERPNext customizations, with proven expertise in designing and delivering tailored solutions for complex business needs. Experienced in integrating development and DevOps practices, including infrastructure automation, CI/CD workflows, and cloud technologies.</p>
+            <p>Adept at Python programming and aligning technical implementations with business goals, leveraging an MBA in Supply Chain Management and Business Analytics to drive operational efficiency.</p>
+        </section>
+        
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            
+            <div class="experience-item">
+                <h3>Trainee Software Engineer</h3>
+                <p>Data for Decisions, Bangalore</p>
+                <p class="date">February 2024 - Present</p>
+                
+                <div class="preview-content">
+                    <p class="experience-subheading">Development Activities:</p>
+                    <ul class="experience-list">
+                        <li>Delivered tailored ERPNext solutions for multiple clients by customizing DocTypes, Workflows, and Reports to meet specific business requirements.</li>
+                        <li>Implemented a workflow customization in the "Grant Service" module that replaced system-generated identifiers with user-friendly field values in notifications.</li>
+                        <li>Built and optimized backend APIs to enhance system interoperability, achieving 90% availability and reducing processing delays.</li>
+                    </ul>
+                </div>
+                
+                <div class="collapsible-content" id="experienceContent">
+                    <ul class="experience-list">
+                        <li>Architected and deployed interactive dashboards for an agricultural products company, increasing data accessibility by 70% using Frappe Insights.</li>
+                        <li>Developed a critical patch for AwesomePOS to ensure seamless compatibility with ERPNext V15, resolving version-related challenges efficiently.</li>
+                        <li>Introduced advanced customizations through method overriding, maintaining the integrity and stability of ERPNext's core functionalities.</li>
+                        <li>Designed RESTful APIs for seamless communication between ERPNext and external applications, processing large datasets efficiently.</li>
+                        <li>Created FastAPI endpoints for real-time data handling, ensuring 40% faster response times.</li>
+                    </ul>
+                    
+                    <p class="experience-subheading">DevOps Activities:</p>
+                    <ul class="experience-list">
+                        <li>Managed and optimized ERPNext and Frappe deployments across 15+ instances, achieving 97% uptime and reducing deployment time by 40% through automation.</li>
+                        <li>Designed and implemented CI/CD workflows with GitHub Actions, improving deployment cycles by 60% and automating testing processes.</li>
+                        <li>Deployed microservices using PM2, enhancing application performance by 25% and reducing downtime by 45%.</li>
+                        <li>Optimized MySQL queries, reducing average response times by 40% for large datasets.</li>
+                        <li>Automated backup and disaster recovery strategies, ensuring data integrity and minimizing potential data loss.</li>
+                        <li>Implemented centralized logging and monitoring using tools like Prometheus and Grafana, enabling proactive issue resolution and performance tracking.</li>
+                        <li>Configured NGINX and SSL for secure and scalable deployments, improving system security and reliability.</li>
+                        <li>Streamlined Docker container management, enhancing deployment consistency and simplifying environment replication.</li>
+                        <li>Improved server resource utilization through load balancing and optimized scaling strategies.</li>
+                        <li>Automated routine maintenance tasks using shell scripts and cron jobs, reducing manual intervention and operational risks.</li>
+                    </ul>
+                </div>
+                
+                <button class="toggle-btn" id="toggleBtn" onclick="toggleContent()">See More <span class="expand-icon">▼</span></button>
+            </div>
+        </section>
+        
+        <section id="skills">
+            <h2>Skills & Expertise</h2>
+            
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
+                    <div class="skill-pills">
+                        <div class="skill-pill">Python</div>
+                        <div class="skill-pill">JavaScript</div>
+                        <div class="skill-pill">Microservices</div>
+                        <div class="skill-pill">Frappe Framework</div>
+                        <div class="skill-pill">ERPNext</div>
+                        <div class="skill-pill">FastAPI</div>
+                        <div class="skill-pill">RESTful APIs</div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>DevOps</h3>
+                    <div class="skill-pills">
+                        <div class="skill-pill">Azure DevOps</div>
+                        <div class="skill-pill">GitHub</div>
+                        <div class="skill-pill">Gitlab</div>
+                        <div class="skill-pill">AWS</div>
+                        <div class="skill-pill">Jenkins</div>
+                        <div class="skill-pill">Docker</div>
+                        <div class="skill-pill">CI/CD</div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Big Data & Tools</h3>
+                    <div class="skill-pills">
+                        <div class="skill-pill">Azure Databricks</div>
+                        <div class="skill-pill">Apache Spark</div>
+                        <div class="skill-pill">Apache Airflow</div>
+                        <div class="skill-pill">Prometheus</div>
+                        <div class="skill-pill">Grafana</div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <div class="skill-pills">
+                        <div class="skill-pill">MariaDB</div>
+                        <div class="skill-pill">PostgreSQL</div>
+                        <div class="skill-pill">MySQL</div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Personal Skills</h3>
+                    <div class="skill-pills">
+                        <div class="skill-pill">Flexible</div>
+                        <div class="skill-pill">Persevering</div>
+                        <div class="skill-pill">Quick Learner</div>
+                        <div class="skill-pill">Analytical Thinking</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tech-badges">
+                <div class="tech-badge">
+                    <div class="tech-icon">🐍</div>
+                    <div class="tech-name">Python</div>
+                </div>
+                <div class="tech-badge">
+                    <div class="tech-icon">☁️</div>
+                    <div class="tech-name">Cloud</div>
+                </div>
+                <div class="tech-badge">
+                    <div class="tech-icon">🛢️</div>
+                    <div class="tech-name">Database</div>
+                </div>
+                <div class="tech-badge">
+                    <div class="tech-icon">🔄</div>
+                    <div class="tech-name">CI/CD</div>
+                </div>
+                <div class="tech-badge">
+                    <div class="tech-icon">📊</div>
+                    <div class="tech-name">Analytics</div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="education">
+            <h2>Education</h2>
+            
+            <div class="education-item">
+                <h3>Master of Business Administration</h3>
+                <p>Dayananda Sagar College of Engineering, Bengaluru</p>
+                <p class="date">2021 - 2023</p>
+                <p>CGPA: 8.5</p>
+            </div>
+            
+            <div class="education-item">
+                <h3>BE in Industrial Engineering and Management</h3>
+                <p>Tumakuru</p>
+                <p class="date">2017 - 2021</p>
+                <p>Aggregate: 60%</p>
+            </div>
+        </section>
+        
+        <section id="publications">
+            <h2>Publications</h2>
+            
+            <div class="publication-item">
+                <h3>"Adoption Intentions Towards Smart Warehousing Using Industry 4.0 Technologies"</h3>
+                <p>Published in: Impacts of Technology on Operations Management: Adoption, Adaptation, and Optimization</p>
+                <p>Publisher: IGI Global | <a href="https://lnkd.in/g9AjGUeU" class="publication-link" target="_blank">https://lnkd.in/g9AjGUeU</a></p>
+                <p>Explores the role of Industry 4.0 technologies in transforming smart warehousing and their impact on logistics and supply chain management.</p>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="contact-info">
+            <p>Email: nikhildascr84@gmail.com</p>
+            <p>Phone: +91 8095003591</p>
+            <p>Location: Bangalore, India</p>
+        </div>
+        
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/nikhildascr/" class="social-icon" target="_blank">in</a>
+            <a href="#" class="social-icon">f</a>
+            <a href="#" class="social-icon">tw</a>
+            <a href="#" class="social-icon">gh</a>
+        </div>
+        
+        <p>&copy; 2025 Nikhildas C R. All Rights Reserved.</p>
+    </footer>
+    
+    <script>
+        function toggleContent() {
+            const content = document.getElementById('experienceContent');
+            const btn = document.getElementById('toggleBtn');
+            const icon = btn.querySelector('.expand-icon');
+            
+            content.classList.toggle('expanded');
+            icon.classList.toggle('rotate');
+            
+            if (content.classList.contains('expanded')) {
+                btn.innerHTML = 'See Less <span class="expand-icon rotate">▼</span>';
+            } else {
+                btn.innerHTML = 'See More <span class="expand-icon">▼</span>';
+            }
+        }
+    </script>
+</body>
+</html>
